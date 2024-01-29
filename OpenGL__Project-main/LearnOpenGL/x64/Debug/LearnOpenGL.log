@@ -1,0 +1,9 @@
+﻿  main.cpp
+C:\Users\deyaa\Downloads\OpenGL__Project-main\OpenGL__Project-main\LearnOpenGL\Mesh.h(62,50): warning C4267: "Argument": Konvertierung von "size_t" nach "GLsizei", Datenverlust möglich
+  (Quelldatei „main.cpp“ wird kompiliert)
+  
+C:\Users\deyaa\Downloads\OpenGL__Project-main\OpenGL__Project-main\LearnOpenGL\main.cpp(633,41): warning C4305: "Argument": Verkürzung von "double" in "float"
+C:\Users\deyaa\Downloads\OpenGL__Project-main\OpenGL__Project-main\LearnOpenGL\main.cpp(635,42): warning C4305: "Argument": Verkürzung von "double" in "float"
+C:\Users\deyaa\Downloads\OpenGL__Project-main\OpenGL__Project-main\LearnOpenGL\main.cpp(637,38): warning C4305: "Argument": Verkürzung von "double" in "float"
+C:\Users\deyaa\Downloads\OpenGL__Project-main\OpenGL__Project-main\LearnOpenGL\main.cpp(639,39): warning C4305: "Argument": Verkürzung von "double" in "float"
+  LearnOpenGL.vcxproj -> C:\Users\deyaa\Downloads\OpenGL__Project-main\OpenGL__Project-main\x64\Debug\LearnOpenGL.exe

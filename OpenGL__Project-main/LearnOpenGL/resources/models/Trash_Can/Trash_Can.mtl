@@ -1,0 +1,26 @@
+# Blender 3.6.0 MTL File: 'None'
+# www.blender.org
+
+newmtl metal_trash_can.001
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd metal_0051_color_1k.jpg
+map_Ns metal_0051_roughness_1k.jpg
+
+map_Bump -bm 1.000000 metal_0051_normal_opengl_1k.png
+
+newmtl metal_trash_can_rust.001
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd metal_0051_color_1k.jpg
+map_Ns metal_0051_roughness_1k.jpg
+
+map_Bump -bm 1.000000 metal_0051_normal_opengl_1k.png

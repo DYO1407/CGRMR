@@ -1,0 +1,179 @@
+# Blender 3.6.2 MTL File: 'Supercarro.blend'
+# www.blender.org
+
+newmtl 3943229-fotor-bg-remover-2023061819293-transformed
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.048556 0.120247 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 2
+map_d chevrolet-camaro-ss-1967/source/3943229-fotor-bg-remover-2023061819293-transformed.png
+
+newmtl Cap
+Ka 0.899083 0.899083 0.899083
+Kd 0.146830 0.146830 0.146830
+Ks 0.862385 0.862385 0.862385
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Ns chevrolet-camaro-ss-1967/source/chevrolet textures/Cap_Roughness.png
+map_refl chevrolet-camaro-ss-1967/source/chevrolet textures/Cap_Metallic.png
+map_Bump -bm 1.000000 chevrolet-camaro-ss-1967/source/chevrolet textures/Cap_Normal_OpenGL.png
+
+newmtl Frontgrill
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ns chevrolet-camaro-ss-1967/source/chevrolet textures/Frontgrill_Roughness.png
+map_refl chevrolet-camaro-ss-1967/source/chevrolet textures/Frontgrill_Metallic.png
+map_Bump -bm 1.000000 chevrolet-camaro-ss-1967/source/chevrolet textures/Frontgrill_Normal_OpenGL.png
+
+newmtl Glass
+Ka 1.000000 1.000000 1.000000
+Kd 0.010873 0.014084 0.024131
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ns chevrolet-camaro-ss-1967/source/chevrolet textures/Glass_Roughness.png
+map_refl chevrolet-camaro-ss-1967/source/chevrolet textures/Glass_Metallic.png
+map_Bump -bm 0.500000 chevrolet-camaro-ss-1967/source/chevrolet textures/Glass_Normal_OpenGL.png
+
+newmtl Interior
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ns chevrolet-camaro-ss-1967/source/chevrolet textures/Interior_Roughness.png
+map_refl chevrolet-camaro-ss-1967/source/chevrolet textures/Interior_Metallic.png
+map_Bump -bm 1.000000 chevrolet-camaro-ss-1967/source/chevrolet textures/Interior_Normal_OpenGL.png
+
+newmtl Lights
+Ns 640.734192
+Ka 1.000000 1.000000 1.000000
+Kd 0.029618 0.032846 0.344965
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 0.400000 chevrolet-camaro-ss-1967/source/Lights_Normal.png
+
+newmtl Material
+Ns 250.000000
+Ka 0.543478 0.543478 0.543478
+Kd 0.010238 0.010238 0.010238
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Material.001
+Ns 9.569951
+Ka 0.923913 0.923913 0.923913
+Kd 0.097891 0.097891 0.097891
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Material.002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.001069 0.001069 0.001069
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Material.020
+Ns 433.323853
+Ka 0.527749 0.527749 0.527749
+Kd 0.367933 0.004783 0.005671
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Metal
+Ka 1.000000 1.000000 1.000000
+Kd 0.019026 0.019026 0.019026
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ns chevrolet-camaro-ss-1967/source/chevrolet textures/Metal_Roughness.png
+map_refl chevrolet-camaro-ss-1967/source/chevrolet textures/Metal_Metallic.png
+map_Bump -bm 1.000000 chevrolet-camaro-ss-1967/source/chevrolet textures/Metal_Normal_OpenGL.png
+
+newmtl Mirror
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Paint
+Ka 1.000000 1.000000 1.000000
+Kd 0.461874 0.011542 0.007673
+Ks 0.048338 0.048338 0.048338
+Ke 0.000000 0.000000 0.000000
+Ni 5.750000
+d 1.000000
+illum 2
+map_Ns chevrolet-camaro-ss-1967/source/chevrolet textures/Paint_Roughness.png
+map_Bump -bm 1.000000 chevrolet-camaro-ss-1967/source/chevrolet textures/Paint_Normal_OpenGL.png
+
+newmtl Plastic
+Ka 1.000000 1.000000 1.000000
+Kd 0.133505 0.133505 0.133505
+Ks 0.226190 0.226190 0.226190
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ns chevrolet-camaro-ss-1967/source/chevrolet textures/Plastic_Roughness.png
+map_refl chevrolet-camaro-ss-1967/source/chevrolet textures/Plastic_Metallic.png
+map_Bump -bm 1.000000 chevrolet-camaro-ss-1967/source/chevrolet textures/Plastic_Normal_OpenGL.png
+
+newmtl Seats
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ns chevrolet-camaro-ss-1967/source/chevrolet textures/Seats_Roughness.png
+map_refl chevrolet-camaro-ss-1967/source/chevrolet textures/Seats_Metallic.png
+map_Bump -bm 1.000000 chevrolet-camaro-ss-1967/source/chevrolet textures/Seats_Normal_OpenGL.png
+
+newmtl Tire
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 10.949999
+d 1.000000
+illum 2
+map_Ns chevrolet-camaro-ss-1967/source/chevrolet textures/RIMSTOCK_05_rough.png
+map_Bump -bm 1.000000 chevrolet-camaro-ss-1967/source/chevrolet textures/RIMSTOCK_05_nrm.png

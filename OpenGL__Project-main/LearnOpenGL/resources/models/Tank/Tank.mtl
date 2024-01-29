@@ -1,0 +1,18 @@
+# Blender 3.6.0 MTL File: 'None'
+# www.blender.org
+
+newmtl Main_tank.001
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ni 1.450000
+d 1.000000
+illum 2
+
+map_Ka DefaultMaterial_Base_Color.jpg 
+map_Kd DefaultMaterial_Base_Color.jpg  
+map_Ks DefaultMaterial_Metallic.jpg    
+map_Ns DefaultMaterial_Roughness.jpg   
+map_d DefaultMaterial_Mixed_AO.jpg     
+bump DefaultMaterial_Height.jpg        
+map_Bump DefaultMaterial_Normal_OpenGL.jpg 

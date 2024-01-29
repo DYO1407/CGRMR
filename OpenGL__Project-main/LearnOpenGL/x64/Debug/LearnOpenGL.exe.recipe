@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Users\deyaa\Downloads\OpenGL__Project-main\OpenGL__Project-main\x64\Debug\LearnOpenGL.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Users\deyaa\Downloads\OpenGL__Project-main\OpenGL__Project-main\LearnOpenGL\resources\models\85-cottage_obj\cottage_obj.obj</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\deyaa\Downloads\OpenGL__Project-main\OpenGL__Project-main\LearnOpenGL\resources\models\war_ship\war_shipobj.obj</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\deyaa\Downloads\OpenGL__Project-main\OpenGL__Project-main\LearnOpenGL\resources\models\OldChevroletCamaro\Model\LowPolyOldCamaro.obj</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

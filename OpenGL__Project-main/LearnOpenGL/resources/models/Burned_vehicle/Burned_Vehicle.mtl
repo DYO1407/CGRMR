@@ -1,0 +1,34 @@
+# Blender 3.6.0 MTL File: 'None'
+# www.blender.org
+
+newmtl Cloth_Burned.001
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd green_metal_rust_diff_1k.jpg
+map_Ns green_metal_rust_rough_1k.jpg
+
+
+newmtl Truck_Burned.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd metal_8133.jpg
+
+newmtl Window.001
+Ns 706.574219
+Ka 0.318841 0.318841 0.318841
+Kd 0.003585 0.008316 0.016076
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
