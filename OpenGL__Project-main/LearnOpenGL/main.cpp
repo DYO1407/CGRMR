@@ -57,16 +57,21 @@ bool firstMouse = true;
 // timing
 float deltaTime = 0.0f;	// time between current frame and last frame
 float lastFrame = 0.0f;
+bool gamestarted = false;
 
+float adjustmentX_user = 0.0f;
+float adjustmentY_user = 15.0f;
+float adjustmentZ_user = 0.0f;
+
+bool goingRight = false;
+bool goingLeft = false;
+
+float startFrame = 0.0f;
 int main(void)
 {
 
     const unsigned int SCR_WIDTH = 800;
     const unsigned int SCR_HEIGHT = 600;
-
-
-  
-
     GLFWwindow* window;
      Assimp::Importer importer;
     /* Initialize the library */
@@ -74,7 +79,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello Dude From OpenGL", NULL, NULL);
+    window = glfwCreateWindow(1600, 900, "Hello Dude From OpenGL", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -174,23 +179,6 @@ int main(void)
     glm::vec3(1.5f,  0.2f, -1.5f),
     glm::vec3(-1.3f,  1.0f, -1.5f)
     };
-
-    //Coordinates of the triangel
-  /*  float vertices[] = {
-        // positions          // colors           // texture coords (note that we changed them to 2.0f!)
-         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
-         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // top left 
-    };*/
-
-    // Coordinates of the rectangle
-   /* float vertices[] = {
-       0.5f,  0.5f, 0.0f,  // top right
-       0.5f, -0.5f, 0.0f,  // bottom right
-      -0.5f, -0.5f, 0.0f,  // bottom left
-      -0.5f,  0.5f, 0.0f   // top left 
-    };*/
     unsigned int indices[] = {  // note that we start from 0!
         0, 1, 3,   // first triangle
         1, 2, 3    // second triangle
@@ -217,9 +205,7 @@ int main(void)
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-    // color attribute
-   // glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-    //glEnableVertexAttribArray(1);
+
     // texture coord attribute
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(2);
@@ -232,175 +218,20 @@ int main(void)
     glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
     std::cout << "Maximum nr of vertex attributes supported: " << nrAttributes << std::endl;
 
-
-    
-    /*    //Vertex_Shader
-    unsigned int vertexShader;
-    vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    
-    //Fragment_Shader
-    unsigned int fragmentShader;
-    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-
-    //Compiling  of Both Shaders  
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-    glCompileShader(fragmentShader);
-    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-    glCompileShader(vertexShader);
-
-    // checking if the compilation of the Sahder is successful
-    int  success_p,success_v,success_f;
-    char infoLog[512];
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success_v);
-    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success_f);
-    if (!success_v)
-    {
-        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_OF_VertexShader_FAILED\n" << infoLog << std::endl;
-    }
-
-    else
-
-    {
-        std::cout << "Compilation of the vertexShader  is successful" << std::endl;
-    }
-    if (!success_f)
-    {
-        glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_OF_FragmentShader_FAILED\n" << infoLog << std::endl;
-    }
-
-    else
-
-    {
-        std::cout << "Compilation of the fragmentShader  is successful" << std::endl;
-    }
-
-    unsigned int  shaderProgram;
-    shaderProgram = glCreateProgram();
-
-    // Linking Both Shaders in one shaderProgram
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-
-
-    // Checking the Linking 
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success_p);
-    if (!success_p) {
-        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-
-        std::cout << "ERROR::SHADER::SHADERSPROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
-        
-    }
-    else
-
-    {
-        std::cout << "Linking  of the Shaders  is successful" << std::endl;
-    }
-
-    
-
-    // Deleting tha Sahder_Objects after we linked them in the Shaderprogram
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);*/
-
-
- 
     ourShader.use(); // Aktivate the shader Program
-
-    // build and compile shaders
-// -------------------------
-   // Shader ourShader("shaders/model_loading.vs", "shaders/model_loading.fs");
-
-    // load models
-    // -----------
-  //  Model ourModel("resources/models/backpack/backpack.obj");
-
-
-   
-
-/**/
-    /*// Texture 
-    unsigned int texture1;
-    glGenTextures(1, &texture1);
-    glBindTexture(GL_TEXTURE_2D, texture1);
-    // set the texture wrapping/filtering options (on the currently bound texture object)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    // load and generate the texture
-    int width1, height1, nrChannels1;
-    unsigned char* data1 = stbi_load("textures/container.jpg", &width1, &height1, &nrChannels1, 0);
-    if (data1)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width1, height1, 0, GL_RGB, GL_UNSIGNED_BYTE, data1);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        std::cout << "Failed to load texture" << std::endl;
-    }
-    stbi_image_free(data1);
-
-
-    // Texture 
-    unsigned int texture2;
-    glGenTextures(1, &texture2);
-    glBindTexture(GL_TEXTURE_2D, texture2);
-    // set the texture wrapping/filtering options (on the currently bound texture object)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    // load and generate the texture
-    int width2, height2, nrChannels2;
-    unsigned char* data2 = stbi_load("textures/awesomeface.png", &width2, &height2, &nrChannels2, 0);
-    if (data2)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width2, height2, 0, GL_RGBA, GL_UNSIGNED_BYTE, data2);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        std::cout << "Failed to load texture" << std::endl;
-    }
-    stbi_image_free(data2);
-
-
-    stbi_set_flip_vertically_on_load(true);
-
-    
-
-  //  glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0); // set it manually
-    
-    ourShader.setInt("texture1", 0); // or with shader class
-    ourShader.setInt("texture2", 1); // or with shader class */
-    
-
-    ourShader.use(); // Aktivate the shader Program
-
-    // scale the container by 0.5 on each axis and then rotate the container 90 degrees around the Z-axis.
-  
-    /*glm::mat4 trans = glm::mat4(1.0f);
-    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
-    trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));*/ 
 
     // passing the transformation matrix to the Vertex_shader 
     unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
  
 
- 
-
-
-
-
-
-
     // Enabling Depth Testing
     glEnable(GL_DEPTH_TEST);
 
+
+    glm::vec3 soldierPosition = glm::vec3(55.0f, 0.0f, -7.0f);
+    float soldierSpeed = -6.0f;
+    
+   
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
@@ -409,95 +240,31 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         float currentFrame = static_cast<float>(glfwGetTime());
-        deltaTime = currentFrame - lastFrame;
-        lastFrame = currentFrame;
+        if (gamestarted)
+        {
+            deltaTime = currentFrame - lastFrame - startFrame;
+            lastFrame = currentFrame - startFrame;
 
+            soldierPosition.x += soldierSpeed * deltaTime;
+            glm::vec3 cameraPosition = glm::vec3(11.0f, 15.0f, -4.0f);
+            cameraPosition += soldierPosition;
 
+            camera.Position = cameraPosition;
+            camera.Pitch = -40.0f;
+
+            glm::vec3 direction = glm::normalize(soldierPosition - camera.Position);
+            //camera.Yaw = glm::degrees(atan2(-direction.z, direction.x)) - 180.0f;
+            camera.Yaw = -182.0f;
+        }
         processInput(window);
         
-        // Using OF the Shaders (ShaderProgram),when we want to render an object
-
-       
-
-        //glUseProgram(shaderProgram);
-         // updating the uniform Color over the time  
-
-        // float timeValue = glfwGetTime(); //retrieve the running time in seconds via glfwGetTime(). 
-        
-        // float greenValue = (sin(timeValue) / 2.0f) + 0.5f; // changing the color in the range of 0.0 - 1.0 by using the sin function and store the result in greenValue.
-        
-        // int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
-        
-        // glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
-
-        
-        //ourModel.Draw(ourShader);
-
-
-     
-/*
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture1);
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, texture2);
-        */
         //  create transformations
         glm::mat4 trans = glm::mat4(1.0f);
-      //  trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
-       // trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
 
-
-
-        // ViewPort Transform  to Screen Space
-        
-       
-
-        
-        
-        // passing the transformation matrix to the Vertex_shader 
-        
-        //unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
-        //glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
-
-
-
-        // Model Matrix to Wrold Space
-      /*  glm::mat4 model = glm::mat4(1.0f);
-        model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
-
-        // View Matrix to View Space
-
-         // camera/view transformation
-        glm::mat4 view = camera.GetViewMatrix();
-        ourShader.setMat4("view", view);
-      
-       
-        // note that we're translating the scene in the reverse direction of where we want to move
-       
-       
-         // position , direction  , up vector  // The direction is the current position + the direction vector we just defined. This ensures that however we move, the camera keeps looking at the target direction
-
-        // Move camera forward
-        // view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
-
-        // Move camera backward
-        // view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-
-
-        // Projection Matrix to Clip Space
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        ourShader.setMat4("projection", projection);
-        // Passing Model Matrix to Vertex Shader
-        int modelLoc = glGetUniformLocation(ourShader.ID, "model");
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));// another way using our shader  =>  ourShader.setMat4("model", model);
-
-        // Passing View Matrix to Vertex Shader
-        int viewLoc = glGetUniformLocation(ourShader.ID, "view");
-        //glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-        */
         // Passing Projection Matrix to Vertex Shader
     
 
+        // glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 view = camera.GetViewMatrix();
         ourShader.setMat4("projection", projection);
@@ -562,10 +329,14 @@ int main(void)
         ourShader.setMat4("model", trashcan_model);
         TrashCan_Model.Draw(ourShader);
 
-
+        float addX = 0.0f;
+        if (goingRight)
+            addX -= 3.0f;
+        if (goingLeft)
+            addX += 3.0f;
         glm::mat4 soldier_model = glm::mat4(1.0f);
-        soldier_model = glm::translate(soldier_model, glm::vec3(55.0f, 0.0f, -5.0f)); // translate it down so it's at the center of the scene
-        soldier_model = glm::scale(soldier_model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+        soldier_model = glm::translate(soldier_model, soldierPosition + glm::vec3(0.0f, 0.0f, addX)); // translate it down so it's at the center of the scene
+        soldier_model = glm::scale(soldier_model, glm::vec3(3.0f, 3.0f, 3.0f));	// it's a bit too big for our scene, so scale it down
         soldier_model = glm::rotate(soldier_model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
         ourShader.setMat4("model", soldier_model);
@@ -573,7 +344,7 @@ int main(void)
 
         glm::mat4 monster_model = glm::mat4(1.0f);
         monster_model = glm::translate(monster_model, glm::vec3(63.0f, 0.0f, -5.0f)); // translate it down so it's at the center of the scene
-        monster_model = glm::scale(monster_model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+        monster_model = glm::scale(monster_model, glm::vec3(0.5f, 0.5f, 0.5f));	// it's a bit too big for our scene, so scale it down
         monster_model = glm::rotate(monster_model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
         ourShader.setMat4("model", monster_model);
@@ -581,27 +352,6 @@ int main(void)
        
 
         glBindVertexArray(VAO);
-
-        // drawing 10  containers 
-       /* for (unsigned int i = 0; i < 10; i++)
-        {
-            glm::mat4 model = glm::mat4(1.0f);
-            model = glm::translate(model, cubePositions[i]);
-            float angle = 20.0f * i;
-            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-            ourShader.setMat4("model", model);
-
-            glDrawArrays(GL_TRIANGLES, 0, 36); // To Draw 3d Cube
-        }*/
-       
-       // glDrawArrays(GL_TRIANGLES, 0, 3); // To draw one triangle 
-        //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0); // To draq a rectanlge with 2 triangles 
-
-       // glBindVertexArray(0);
-
-
-
-
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 
@@ -630,13 +380,43 @@ void processInput(GLFWwindow* window)
         glfwSetWindowShouldClose(window, true);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+    {
         camera.ProcessKeyboard(FORWARD, 0.01);
+       // adjustmentX_user++;
+      
+    }
+      
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+    {
         camera.ProcessKeyboard(BACKWARD, 0.01);
+        //adjustmentY_user++;
+    }
+        
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+    {
         camera.ProcessKeyboard(LEFT, 0.01);
+       // adjustmentZ_user++;
+        if (goingRight)
+            goingRight = false;
+        else if (!goingLeft)
+            goingLeft = true;
+    }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+    {
         camera.ProcessKeyboard(RIGHT, 0.01);
+
+        if (goingLeft)
+            goingLeft = false;
+        else if (!goingRight)
+            goingRight = true;
+    }
+       
+    if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS)
+    {
+        gamestarted = !gamestarted;
+        startFrame = static_cast<float>(glfwGetTime());
+    }
+       
 }
 
 // glfw: whenever the mouse moves, this callback is called
